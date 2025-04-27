@@ -16,12 +16,46 @@ Else
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+#include <stdio.h>
+
+struct eligible {
+    int age;
+    char n[50];
+};
+
+int main() {
+    int i, num;
+    printf("Enter number of persons: \n");
+    scanf("%d", &num);
+    struct eligible e[num];
+    for(i = 0; i < num; i++) {
+        printf("Enter name: \n");
+        scanf("%s", e[i].n);
+        printf("Enter age: \n");
+        scanf("%d", &e[i].age);
+    }
+    for(i = 0; i < num; i++) {
+        if(e[i].age <= 6)
+            printf("Vaccine Eligibility: No\n");
+        else
+            printf("Vaccine Eligibility: Yes\n");
+        printf("Name: %s\n", e[i].n);
+        printf("Age: %d\n", e[i].age);
+    }
+    return 0;
+}
+
+
+```
 
 
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/59c60b2f-6605-4dec-b4e0-a399a4c12079)
+
 
 
 Result:
@@ -44,7 +78,30 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+struct numbers {
+    int a;
+    int b;
+};
+
+struct numbers add(struct numbers n) {
+    struct numbers result;
+    result.a = n.a + n.b;
+    return result;
+}
+
+int main() {
+    struct numbers n, res;
+    printf("Enter two numbers: ");
+    scanf("%d%d", &n.a, &n.b);
+    res = add(n);
+    printf("Sum = %d\n", res.a);
+    return 0;
+}
+
+```
 
 
 
@@ -52,7 +109,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/930cf772-5937-48b6-b2cf-987f5955279b)
+
 
 
 
@@ -86,7 +144,27 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    FILE *p;
+    char name[100];
+    printf("Enter the file name: ");
+    scanf("%s", name);
+    printf("File '%s' has been created successfully.\n", name);
+    p = fopen(name, "w");
+    if (p == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+    printf("File opened successfully.\n");
+    fclose(p);
+    printf("File closed successfully.\n");
+    return 0;
+}
+
+```
 
 
 
@@ -94,7 +172,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/3fe162e4-2b57-43f8-862b-fa2fc3fc14b8)
+
 
 
 
@@ -133,15 +212,42 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    FILE *p;
+    char name[100], text[100];
+    int num, i;
+    printf("Enter the file name: \n");
+    scanf("%s", name);
+    printf("Enter the number of strings: \n");
+    scanf("%d", &num);
+    p = fopen(name, "w");
+    if (p == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+    printf("File opened successfully.\n");
+    for(i = 0; i < num; i++) {
+        printf("Enter text: \n");
+        scanf(" %[^\n]", text);
+        fputs(text, p);
+        fputs("\n", p);
+    }
+    fclose(p);
+    printf("Data added successfully.\n");
+    return 0;
+}
+
+```
 
 
 
 
 Output:
 
-
-//paste your output here
+![image](https://github.com/user-attachments/assets/b98fbb67-36e2-4c7b-840e-194c12df6848)
 
 
 
@@ -187,15 +293,46 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct subject {
+    char name[50];
+    int marks;
+};
+
+int main() {
+    int n, i;
+    struct subject *s;
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+    if (s == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    for(i = 0; i < n; i++) {
+        printf("Enter name of subject %d: \n", i + 1);
+        printf("Enter marks for subject %d: \n", i + 1);
+        scanf("%s", s[i].name);
+        scanf("%d", &s[i].marks);
+    }
+    printf("\nSubject Details:\n");
+    for(i = 0; i < n; i++) {
+        printf("%-15s\t%d\n", s[i].name, s[i].marks);
+    }
+    free(s);
+    return 0;
+}
+
+```
 
 
 
 Output:
 
-
-//paste your output here
+![image](https://github.com/user-attachments/assets/9c174bb8-03b4-434c-bb1d-51482a0af2fa)
 
 
 
