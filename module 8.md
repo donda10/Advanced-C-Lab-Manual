@@ -15,8 +15,49 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    switch(n) {
+        case 5:
+            printf("seventy one\n");
+            break;
+        case 6:
+            printf("seventy two\n");
+            break;
+        case 13:
+            printf("seventy three\n");
+            break;
+        case 14:
+            printf("seventy four\n");
+            break;
+        case 15:
+            printf("seventy five\n");
+            break;
+        case 16:
+            printf("seventy six\n");
+            break;
+        case 17:
+            printf("seventy seven\n");
+            break;
+        case 18:
+            printf("seventy eight\n");
+            break;
+        case 19:
+            printf("seventy nine\n");
+            break;
+        default:
+            printf("Greater than 13\n");
+            break;
+    }
+    return 0;
+}
+
+```
 
 
 
@@ -24,7 +65,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/44ddfdc9-699f-4e82-a736-09d4f89bf845)
+
 
 
 
@@ -47,7 +89,26 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    char a[50];
+    int i, h, c;
+    printf("Enter the string: ");
+    scanf("%s", a);
+    for(h = 0; h <= 3; h++) {
+        c = 0;
+        for(i = 0; a[i] != '\0'; i++) {
+            if(a[i] - '0' == h)
+                c++;
+        }
+        printf("%d ", c);
+    }
+    return 0;
+}
+
+```
 
 
 
@@ -55,7 +116,7 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/f63f9837-e8a9-45ef-a54a-48b402128436)
 
 
 
@@ -84,7 +145,49 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void swap(char *x, char *y) {
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int compare(const void *a, const void *b) {
+    return *(char *)a - *(char *)b;
+}
+
+void permute(char *s, int l, int r) {
+    int i;
+    if (l == r) {
+        printf("%s\n", s);
+    } else {
+        for (i = l; i <= r; i++) {
+            swap((s + l), (s + i));
+            permute(s, l + 1, r);
+            swap((s + l), (s + i));
+        }
+    }
+}
+
+int main() {
+    char *s;
+    int n;
+    printf("Enter the string length: ");
+    scanf("%d", &n);
+    s = (char *)malloc((n + 1) * sizeof(char));
+    printf("Enter the string: ");
+    scanf("%s", s);
+    qsort(s, strlen(s), sizeof(char), compare);
+    permute(s, 0, strlen(s) - 1);
+    free(s);
+    return 0;
+}
+
+```
 
 
 
@@ -92,7 +195,8 @@ Program:
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/6fb541a4-3e81-4f3c-ba3e-2d975494f6e2)
+
 
 
 
@@ -117,15 +221,33 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+```
+int main() {
+    int n, i, j, min;
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    int len = n * 2 - 1;
+    for(i = 0; i < len; i++) {
+        for(j = 0; j < len; j++) {
+            min = i < j ? i : j;
+            if(len - i - 1 < min) min = len - i - 1;
+            if(len - j - 1 < min) min = len - j - 1;
+            printf("%d ", n - min);
+        }
+        printf("\n");
+    }
+    return 0;
+}
 
-
+```
 
 
 Output:
 
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/95754441-a9aa-415f-ae22-01fa8e3d271f)
+
 
 
 
@@ -156,7 +278,24 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int square() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;
+}
+
+int main() {
+    int result;
+    result = square();
+    printf("Square = %d\n", result);
+    return 0;
+}
+
+```
 
 
 
@@ -164,8 +303,7 @@ Program:
 Output:
 
 
-//paste your output here
-
+![image](https://github.com/user-attachments/assets/113ae7c3-5caf-456f-b709-9cca9b857c5c)
 
 
 
