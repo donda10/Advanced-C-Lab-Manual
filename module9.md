@@ -13,11 +13,77 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+#define MAX 10
+
+int stack[MAX];
+int top = -1;
+
+void display() {
+    int i;
+    if(top == -1) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("Stack elements are:\n");
+        for(i = top; i >= 0; i--) {
+            printf("%d\n", stack[i]);
+        }
+    }
+}
+
+void push(int value) {
+    if(top == MAX - 1) {
+        printf("Stack Overflow.\n");
+    } else {
+        top++;
+        stack[top] = value;
+    }
+}
+
+void pop() {
+    if(top == -1) {
+        printf("Stack Underflow.\n");
+    } else {
+        top--;
+    }
+}
+
+int main() {
+    int choice, value;
+    while(1) {
+        printf("\n1.Push\n2.Pop\n3.Display\n4.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch(choice) {
+            case 1:
+                printf("Enter value to push: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+}
+
+```
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/367b8c31-c00c-4780-ab7b-4d85f43b10fe)
+
+
+![image](https://github.com/user-attachments/assets/46190f67-8ddb-4ac1-89d7-3e36111d0034)
+
 
 
 
@@ -35,12 +101,41 @@ Algorithm:
 4.	Call the push function as needed.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+#define SIZE 10
 
+float stack[SIZE];
+int top = -1;
+
+void push(float value) {
+    if(top == SIZE - 1) {
+        printf("Stack Overflow.\n");
+    } else {
+        top++;
+        stack[top] = value;
+        printf("%.2f pushed into the stack.\n", value);
+    }
+}
+
+int main() {
+    int n, i;
+    float value;
+    printf("Enter number of elements to push: ");
+    scanf("%d", &n);
+    for(i = 0; i < n; i++) {
+        printf("Enter value to push: ");
+        scanf("%f", &value);
+        push(value);
+    }
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/71678404-a1dc-403c-9fa0-2a18b000cf0d)
+
 
 
 
@@ -61,12 +156,77 @@ Algorithm:
 4.	Call the display function and perform other queue operations as needed.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+#define SIZE 10
 
+int queue[SIZE];
+int front = -1, rear = -1;
+
+void display() {
+    int i;
+    if(front == -1 || front > rear) {
+        printf("Queue is empty.\n");
+    } else {
+        printf("Queue elements are:\n");
+        for(i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+void enqueue(int value) {
+    if(rear == SIZE - 1) {
+        printf("Queue Overflow.\n");
+    } else {
+        if(front == -1) front = 0;
+        rear++;
+        queue[rear] = value;
+    }
+}
+
+void dequeue() {
+    if(front == -1 || front > rear) {
+        printf("Queue Underflow.\n");
+    } else {
+        front++;
+    }
+}
+
+int main() {
+    int choice, value;
+    while(1) {
+        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch(choice) {
+            case 1:
+                printf("Enter value to enqueue: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                return 0;
+            default:
+                printf("Invalid choice.\n");
+        }
+    }
+}
+
+```
 Output:
+![image](https://github.com/user-attachments/assets/f7a0fbae-4df5-44ec-800f-b58809cdafc1)
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/4ca00941-4bcd-4e15-8dbf-3166fa44e8c2)
+
 
 
 Result:
@@ -86,11 +246,44 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+#define SIZE 10
+
+float queue[SIZE];
+int front = -1, rear = -1;
+
+void enqueue(float value) {
+    if(rear == SIZE - 1) {
+        printf("Queue Overflow.\n");
+    } else {
+        if(front == -1) front = 0;
+        rear++;
+        queue[rear] = value;
+        printf("%.2f inserted into queue.\n", value);
+    }
+}
+
+int main() {
+    int n, i;
+    float value;
+    printf("Enter number of elements to insert: ");
+    scanf("%d", &n);
+    for(i = 0; i < n; i++) {
+        printf("Enter value to insert: ");
+        scanf("%f", &value);
+        enqueue(value);
+    }
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/980a7301-5508-4541-b0d5-ed74c592e50c)
+
 
 Result:
 Thus, the program to insert elements in queue using array is verified successfully.
@@ -121,11 +314,52 @@ o	After deletion, check if the front pointer has passed the rear pointer (front 
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+#define SIZE 10
+
+int queue[SIZE];
+int front = -1, rear = -1;
+
+void dequeue() {
+    if(front == -1 || front > rear) {
+        printf("Queue is empty. No elements to delete.\n");
+    } else {
+        printf("Deleted element: %d\n", queue[front]);
+        front++;
+        if(front > rear) {
+            front = -1;
+            rear = -1;
+        }
+    }
+}
+
+int main() {
+    int n, i, value;
+    printf("Enter number of elements to insert: ");
+    scanf("%d", &n);
+    for(i = 0; i < n; i++) {
+        printf("Enter value to insert: ");
+        scanf("%d", &value);
+        if(rear == SIZE - 1) {
+            printf("Queue Overflow.\n");
+            break;
+        }
+        if(front == -1) front = 0;
+        rear++;
+        queue[rear] = value;
+    }
+    dequeue();
+    dequeue();
+    return 0;
+}
+
+```
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/b675ea46-2dc1-4373-85e8-c5187951e07c)
+
 
 
 Result:
