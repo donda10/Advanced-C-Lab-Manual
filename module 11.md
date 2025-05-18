@@ -45,6 +45,8 @@ int main() {
 ```
 
 Output:
+
+
 ![image](https://github.com/user-attachments/assets/d117f27e-f819-4424-b83f-98faf674d187)
 
 Result:
